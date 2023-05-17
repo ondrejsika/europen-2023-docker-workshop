@@ -1,5 +1,7 @@
 FROM golang:1.20 as build
 WORKDIR /build
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
 ENV CGO_ENABLED=0
 RUN go build
