@@ -22,7 +22,14 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		ctx := context.Background()
-		counter, _ := rdb.Incr(ctx, "counter").Result()
+		counter, err := rdb.Incr(ctx, "counter").Result()
+		if err != nil {
+			log.Error().
+				Str("hostname", HOSTNAME).
+				Str("method", r.Method).
+				Str("path", r.URL.Path).
+				Msg(err.Error())
+		}
 		w.Header().Set("Content-Type", "text/html")
 		fmt.Fprintf(w, "<h1>Hello EurOpen! %d %s</h1>\n", counter, HOSTNAME)
 		log.Info().
