@@ -6,3 +6,11 @@ services:
     image: reg.istry.cz/europen/ondrejsika/server:1
     ports:
       - ${PORT:-8000}:8000
+    environment:
+      REDIS_HOST: redis
+  redis:
+    image: redis:7
+    volumes:
+      - redis-data:/data
+volumes:
+  redis-data:
