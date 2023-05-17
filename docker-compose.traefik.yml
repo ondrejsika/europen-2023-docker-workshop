@@ -1,0 +1,13 @@
+services:
+  server:
+    networks:
+      - default
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.server.rule=Host(`${HOST?Env var HOST is required}`)
+      - traefik.http.routers.server.entrypoints=http,https
+      - traefik.http.routers.server.tls.certresolver=le
+networks:
+  traefik:
+    name: traefik

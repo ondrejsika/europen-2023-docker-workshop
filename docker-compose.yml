@@ -4,9 +4,6 @@ services:
   server:
     build: .
     image: reg.istry.cz/europen/ondrejsika/server:1
-    platform: linux/amd64
-    ports:
-      - ${PORT:-8000}:8000
     environment:
       REDIS_HOST: redis
   redis:
