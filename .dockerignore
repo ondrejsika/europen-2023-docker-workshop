@@ -1,0 +1,7 @@
+_examples
+.git
+.gitignore
+.editorconfig
+Dockerfile
+docker-compose.yml
+*.md

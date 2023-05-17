@@ -1,0 +1,8 @@
+version: '3.8'
+name: europen
+services:
+  server:
+    build: .
+    image: reg.istry.cz/europen/ondrejsika/server:1
+    ports:
+      - ${PORT:-8000}:8000
